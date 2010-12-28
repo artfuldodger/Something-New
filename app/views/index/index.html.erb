@@ -1,0 +1,7 @@
+<p>Hello</p>
+<h2>Latest Users</h2>
+<ol>
+  <% @newest_users.each do |user| %>
+    <li><%= link_to user.login, user_path(user) %></li>
+  <% end %>
+</ol>
