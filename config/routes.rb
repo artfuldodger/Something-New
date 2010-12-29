@@ -1,5 +1,7 @@
 Somethingnew::Application.routes.draw do
   
+  resources :activities
+
   resource :user_session
   root :to => "index#index"
   
