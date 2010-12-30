@@ -1,38 +1,32 @@
-<p>
-  <b>Login:</b>
-  <%=h @user.login %>
-</p>
+<h2>
+  <%= @user.login %>
+</h2>
 
-<p>
-  <b>Login count:</b>
-  <%=h @user.login_count %>
-</p>
+<h3>Activities</h3>
+<% if @user == @current_user %>
+  <% if @user.activities.find(:all, :conditions => { :date => Date.today }).count == 0 %>
+    <p>You don't have anything scheduled for today yet! Let's set something up now!</p>
+    <%= link_to 'New Activity', new_activity_path, :class => "awesome medium red" %>
+  <% else %>
+    <%= link_to 'New Activity', new_activity_path %><br />
+  <% end %>
+<% end %>
+<br />
+<ul>
+<% @activities.each do |activity| %>
+  <li>
+  <% if activity.date == Date.today %>
+    <%= link_to "#{activity.date} #{activity.description_short}", activity, :class => "awesome medium blue" %>
+  <% else %>
+    <%= link_to "#{activity.date} #{activity.description_short}", activity %>
+  <% end %>
+    
+  </li>
+<% end %>
+</ul>
 
-<p>
-  <b>Last request at:</b>
-  <%=h @user.last_request_at %>
-</p>
-
-<p>
-  <b>Last login at:</b>
-  <%=h @user.last_login_at %>
-</p>
-
-<p>
-  <b>Current login at:</b>
-  <%=h @user.current_login_at %>
-</p>
-
-<p>
-  <b>Last login ip:</b>
-  <%=h @user.last_login_ip %>
-</p>
-
-<p>
-  <b>Current login ip:</b>
-  <%=h @user.current_login_ip %>
-</p>
+<%= will_paginate @activities %>
 
 <% if @user == @current_user %>
-  <%= link_to 'Edit', edit_account_path %>
+  <br /><br /><%= link_to 'Edit Profile', edit_account_path %><br /><br />
 <% end %>

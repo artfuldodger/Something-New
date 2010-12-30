@@ -7,7 +7,7 @@ class UsersController < ApplicationController
   end
   
   def create
-    @user = User.new(params[:user])
+    @user = User.new(params[:user]) 
     if @user.save
       flash[:notice] = "Account registered!"
       redirect_back_or_default account_url
@@ -22,6 +22,7 @@ class UsersController < ApplicationController
     else
       @user = @current_user
     end
+    @activities = @user.activities.find(:all, :order => 'date ASC').paginate(:page => params[:page], :per_page => 10)
   end
 
   def edit

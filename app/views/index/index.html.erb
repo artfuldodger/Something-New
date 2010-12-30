@@ -1,4 +1,20 @@
-<p>Hello</p>
+<p>Do something new every day in 2011. See <a href="http://www.reddit.com/r/somethingnew">the sub-reddit here</a>.
+
+<p>This website is basically a specialized and very simple blogging platform as I figured this could be a better way of keeping track of your activities and a way to make sure it's easy to look through your history, get inspiration, etc.</p>
+
+<p>The goal is to get something done by the beginning of 2011 to enable people to track what they're doing each day and to get inspiration from others.</p>
+
+
+<h2>What's everybody else doing today?</h2>
+<ul>
+  <% @todays_activities.each do |activity| %>
+    <li>
+      <%= link_to activity.description_short, activity_path(activity) %>
+      from 
+      <%= link_to activity.user.login, activity.user %>
+      </li>
+  <% end %>
+</ul>
 <h2>Latest Users</h2>
 <ol>
   <% @newest_users.each do |user| %>
