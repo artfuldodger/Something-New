@@ -1,0 +1,6 @@
+<%= comment.text %> <br />
+- <%= link_to comment.user.login, comment.user %> <%= time_ago_in_words comment.created_at %> ago
+<% if comment.user == current_user or comment.activity.user == current_user %>
+  [<%= link_to 'x', [comment.activity, comment], :confirm => 'Are you sure?', :method => :delete %>]
+<% end %>
+<br /><br />

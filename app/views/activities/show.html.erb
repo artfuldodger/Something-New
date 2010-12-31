@@ -13,27 +13,23 @@
   <%= @activity.description %>
 </p>
 
+<h3>Tags</h3>
+<div id="tags">
+  <%= join_tags(@activity) %>
+</div>
+
 <h3>Comments</h3>
-<% @comments.each do |comment| %>
-  <div class="comment">
-    <%= comment.text %>
-    - <%= link_to comment.user.login, comment.user %> <%= time_ago_in_words(comment.created_at) %> ago
+  <div id="comments">
+    <%= render :partial => "comments/comment",
+               :collection => @activity.comments %>
   </div>
-<% end %>
 
 <%= will_paginate @comments %>
 
 <% if current_user %>
   <br />
   <strong>Add a Comment</strong>
-  <%= form_for([@activity, @activity.comments.build]) do |f| %>
-    <div class="field">
-      <%= f.text_area :text %>
-    </div>
-    <div class="actions">
-      <%= f.submit %>
-    </div>
-  <% end %>
+  <%= render :partial => "comments/form" %>
 <% end %>
 
 
