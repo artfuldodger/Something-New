@@ -13,27 +13,29 @@
   <%= @activity.description %>
 </p>
 
-<h3>Tags</h3>
-<div id="tags">
-  <%= join_tags(@activity) %>
-</div>
-
-<h3>Comments</h3>
-  <div id="comments">
-    <%= render :partial => "comments/comment",
-               :collection => @activity.comments %>
+<% if @activity.tags.count > 0 %>
+  <h3>Tags</h3>
+  <div id="tags">
+    <%= raw join_tags(@activity) %>
   </div>
+<% end %>
+
+<h3 id="comment_header">Comments</h3>
+<% if current_user %>
+  <%= link_to "new comment", new_activity_comment_path(@activity, :format => :js), :remote => true, :id => 'new_comment_link', :style => 'vertical-align: middle' %><br /><br />
+<% end %>
+<div id="comments">
+  <%= render :partial => "comments/comment",
+             :collection => @activity.comments %>
+</div>
 
 <%= will_paginate @comments %>
 
-<% if current_user %>
-  <br />
-  <strong>Add a Comment</strong>
-  <%= render :partial => "comments/form" %>
-<% end %>
+
 
 
 <% if @activity.user == current_user %>
   <%= link_to 'Edit', edit_activity_path(@activity) %> |
+  <%= link_to 'Delete', @activity, :confirm => 'This is permanent! Are you sure?', :method => :delete %> |
 <% end %>
 <%= link_to 'All Activities', activities_path %>

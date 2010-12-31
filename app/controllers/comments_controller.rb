@@ -27,10 +27,12 @@ class CommentsController < ApplicationController
   # GET /comments/new
   # GET /comments/new.xml
   def new
-    @comment = Comment.new
+    @activity = Activity.find(params[:activity_id])
+    @comment = @activity.comments.new
 
     respond_to do |format|
       format.html # new.html.erb
+      format.js
       format.xml  { render :xml => @comment }
     end
   end

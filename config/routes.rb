@@ -1,9 +1,11 @@
 Somethingnew::Application.routes.draw do
   
+
+  
   resources :activities do
     resources :comments
   end
-
+  
   resource :user_session
   root :to => "index#index"
   
@@ -13,7 +15,8 @@ Somethingnew::Application.routes.draw do
   match 'logout' => 'user_sessions#destroy'
   match 'index' => 'index#index'
   match 'login' => 'user_sessions#new'
-  
+  match "activities/tag/:tag" => 'activities#index', :as => :tag
+    
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

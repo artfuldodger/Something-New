@@ -1,5 +1,9 @@
 <h1>Listing activities</h1>
-
+<% if params[:tag] %>
+  <p>
+    Searched for tag: <%= params[:tag] %><br />
+    <%= link_to 'All Activities', activities_path %>
+<% end %>
 <table>
   <tr>
     <th>User</th>

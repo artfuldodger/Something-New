@@ -5,7 +5,12 @@ class ActivitiesController < ApplicationController
   # GET /activities
   # GET /activities.xml
   def index
-    @activities = Activity.paginate(:page => params[:page])
+    if params[:tag]
+      #@activities = Activity.joins('LEFT JOIN tags ON activities.id = tags.activity_id WHERE tags.name like ?', params[:tag]).paginate(:page => params[:page])
+      @activities = Activity.joins(:tags).where('tags.name like ?', params[:tag]).paginate(:page => params[:page])
+    else
+      @activities = Activity.paginate(:page => params[:page])
+    end
 
     respond_to do |format|
       format.html # index.html.erb

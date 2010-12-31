@@ -1,8 +1,24 @@
-<p>Do something new every day in 2011. See <a href="http://www.reddit.com/r/somethingnew">the sub-reddit here</a>.
+<% if current_user %>
+  <% if @my_activities_today && @my_activities_today.count > 0 %>
+  <div id="my_activities_today">
+    <h2>Today, you are going to...</h2>
+    <ul>
+    <% @my_activities_today.each do |activity| %>
+      <li><%= link_to activity.description_short, activity %></li>
+    <% end %>
+    </ul>
+  </div>
+  <% else %>
+    <p>You don't have any activities scheduled for today! <%= link_to 'What adventure are you going to have today?', new_activity_path %></p>
+  <% end %>
+<% else %>
+  <p>Do something new every day in 2011. See <a href="http://www.reddit.com/r/somethingnew">the sub-reddit here</a>.
 
-<p>This website is basically a specialized and very simple blogging platform as I figured this could be a better way of keeping track of your activities and a way to make sure it's easy to look through your history, get inspiration, etc.</p>
+  <p>This website is basically a specialized and very simple blogging platform as I figured this could be a better way of keeping track of your activities and a way to make sure it's easy to look through your history, get inspiration, etc.</p>
 
-<p>The goal is to get something done by the beginning of 2011 to enable people to track what they're doing each day and to get inspiration from others.</p>
+  <p>The goal is to get something done by the beginning of 2011 to enable people to track what they're doing each day and to get inspiration from others.</p>
+<% end %>
+
 
 
 <h2>What's everybody else doing today?</h2>
