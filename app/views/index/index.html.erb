@@ -31,6 +31,16 @@
       </li>
   <% end %>
 </ul>
+
+<h2>Top Tags</h2>
+<ul>
+  <% @top_tags.each do |tag| %>
+    <li>
+      <%= link_to tag.name, tag_path(tag.name) %>
+    </li>
+  <% end %>
+</ul>
+
 <h2>Latest Users</h2>
 <ol>
   <% @newest_users.each do |user| %>
