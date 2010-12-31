@@ -17,7 +17,7 @@ class ActivitiesController < ApplicationController
   # GET /activities/1.xml
   def show
     @activity = Activity.find(params[:id])
-
+    @comments = @activity.comments.find(:all, :order => 'created_at ASC').paginate(:page => params[:page], :per_page => 10)
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @activity }

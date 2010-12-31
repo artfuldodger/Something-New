@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_filter :require_no_user, :only => [:new, :create]
-  before_filter :require_user, :only => [:show, :edit, :update]
+  before_filter :require_user, :only => [:edit, :update]
   
   def new
     @user = User.new
@@ -20,7 +20,7 @@ class UsersController < ApplicationController
     if params[:id]
       @user = User.find(params[:id])
     else
-      @user = @current_user
+      @user = current_user
     end
     @activities = @user.activities.find(:all, :order => 'date ASC').paginate(:page => params[:page], :per_page => 10)
   end

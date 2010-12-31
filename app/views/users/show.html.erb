@@ -3,7 +3,7 @@
 </h2>
 
 <h3>Activities</h3>
-<% if @user == @current_user %>
+<% if @user == current_user %>
   <% if @user.activities.find(:all, :conditions => { :date => Date.today }).count == 0 %>
     <p>You don't have anything scheduled for today yet! Let's set something up now!</p>
     <%= link_to 'New Activity', new_activity_path, :class => "awesome medium red" %>
