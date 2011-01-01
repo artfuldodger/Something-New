@@ -18,7 +18,7 @@
   <tr>
     <td><%= link_to activity.user.login, activity.user %></td>
     <td><%= activity.date %></td>
-    <td><%= activity.description[0,20] %></td>
+    <td><%= activity.description_short %></td>
     <td><%= link_to 'Show', activity %></td>
     <td>
       <% if current_user == activity.user %>
