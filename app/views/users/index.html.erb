@@ -1,0 +1,23 @@
+<h1>People</h1>
+<% if params[:name] %>
+  <p>
+    Searched for name: <%= params[:name] %><br />
+    <%= link_to 'All People', users_path %>
+<% end %>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Account Age</th>
+  </tr>
+
+<% @users.each do |user| %>
+  <tr>
+    <td><%= link_to user.login, user %></td>
+    <td><%= time_ago_in_words user.created_at %>
+  </tr>
+<% end %>
+</table>
+
+<%= will_paginate @users %>
+
+<br />

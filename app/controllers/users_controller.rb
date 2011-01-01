@@ -38,4 +38,8 @@ class UsersController < ApplicationController
       render :action => :edit
     end
   end
+  
+  def index
+    @users = User.paginate(:order => 'created_at desc', :page => params[:page])
+  end
 end

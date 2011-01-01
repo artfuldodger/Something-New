@@ -16,9 +16,11 @@
     <h1>
       <%= link_to 'Something New', index_path %>
     </h1>
-    <div id="account_stuff">
+    <div id="top_navigation">
+      <%= link_to 'Activities', activities_path %> |
+      <%= link_to 'People', users_path %> | 
       <% if current_user %>
-        Logged in as: <%= link_to current_user.login, user_path(current_user) %>
+        <%= link_to current_user.login, user_path(current_user) %>
         | 
         <%= link_to 'Logout', logout_path %>
       <% else %>
