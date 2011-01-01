@@ -1,6 +1,6 @@
 class IndexController < ApplicationController
   def index
-    @newest_users = User.last(10)
+    @newest_users = User.order('id desc').last(10)
     @todays_activities = Activity.where(:date => Date.today).limit(10)
     @top_tags = Tag.group(:name).order('count(name) desc').limit(10)
     if current_user
