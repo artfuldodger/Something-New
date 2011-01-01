@@ -1,0 +1,29 @@
+<% if @user && @user.errors.any? %>
+  <div id="error">
+    <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= form.label :login %><br />
+<%= form.text_field :login %><br />
+<br />
+<%= form.label :password, form.object.new_record? ? nil : "Change password" %><br />
+<%= form.password_field :password %><br />
+<br />
+<%= form.label :password_confirmation %><br />
+<%= form.password_field :password_confirmation %><br />
+<% if !form.object.new_record? %>
+  <br />
+  <%= form.label :reddit, 'Reddit Username' %><br />
+  <%= form.text_field :reddit %><br />
+  <br />
+  <%= form.label :location %><br />
+  <%= form.text_field :location %><br />
+  <br />
+  <%= form.label :description %><br />
+  <%= form.text_area :description %>
+<% end %>

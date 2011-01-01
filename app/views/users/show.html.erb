@@ -2,6 +2,19 @@
   <%= @user.login %>
 </h2>
 
+<% if @user.location %>
+  <b>Location:</b> <%= @user.location %><br />
+<% end %>
+
+<% if @user.reddit %>
+  <b>Reddit:</b> <a href="http://www.reddit.com/user/<%= @user.reddit %>" target="_blank"><%= @user.reddit %></a><br />
+<% end %>
+
+<% if @user.description %>
+  <b>Bio</b><br />
+  <%= @user.description %>
+<% end %>
+
 <h3>Activities</h3>
 <% if @user == current_user %>
   <% if @user.activities.find(:all, :conditions => { :date => Date.today }).count == 0 %>
@@ -27,6 +40,6 @@
 
 <%= will_paginate @activities %>
 
-<% if @user == @current_user %>
+<% if @user == current_user %>
   <br /><br /><%= link_to 'Edit Profile', edit_account_path %><br /><br />
 <% end %>
