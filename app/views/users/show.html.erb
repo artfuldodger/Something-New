@@ -2,15 +2,15 @@
   <%= @user.login %>
 </h2>
 
-<% if @user.location %>
+<% if !@user.location.blank? %>
   <b>Location:</b> <%= @user.location %><br />
 <% end %>
 
-<% if @user.reddit %>
+<% if !@user.reddit.blank? %>
   <b>Reddit:</b> <a href="http://www.reddit.com/user/<%= @user.reddit %>" target="_blank"><%= @user.reddit %></a><br />
 <% end %>
 
-<% if @user.description %>
+<% if !@user.description.blank? %>
   <b>Bio</b><br />
   <%= @user.description %>
 <% end %>

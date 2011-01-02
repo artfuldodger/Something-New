@@ -22,6 +22,9 @@
       <% if current_user %>
         <%= link_to current_user.login, user_path(current_user) %>
         | 
+        <% if has_unread_comments %>
+          <%= link_to 'Unread comments!', '/comments/unread' %> |
+        <% end %>
         <%= link_to 'Logout', logout_path %>
       <% else %>
         <%= link_to 'Login', login_path, :class => "awesome medium red" %>

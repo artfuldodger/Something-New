@@ -5,8 +5,19 @@ class CommentsController < ApplicationController
   # GET /comments
   # GET /comments.xml
   def index
-    @comments = Comment.all
-
+    if params[:extra] == 'mine'
+#      @comments = Comment.joins(:activity).where(:comments => { :user_id => current_user.id } or :activities => { :user_id => current_user.id })
+      @comments = Comment.joins(:activity).where('comments.user_id = ? or activities.user_id = ?', current_user.id, current_user.id).paginate(:page => params[:page])
+    elsif params[:extra] == 'unread'
+      @comments = Comment.joins(:activity).where('comments.seen = ? and activities.user_id = ?', false, current_user.id).paginate(:page => params[:page])
+      @comments.each do |comment|
+        Comment.find(comment.id).update_attributes(:seen => true)
+      end
+    else
+      @comments = Comment.paginate(:page => params[:page])
+    end
+    
+    
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @comments }
@@ -43,6 +54,10 @@ class CommentsController < ApplicationController
     @activity = Activity.find(params[:activity_id])
     @comment = @activity.comments.new(params[:comment])
     @comment.user = current_user
+    # Don't want to get notified we have an unread comment from ourselves
+    if @activity.user == current_user
+      @comment.seen = true
+    end
     @comment.save
     
     respond_to do |format|

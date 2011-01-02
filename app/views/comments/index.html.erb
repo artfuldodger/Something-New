@@ -1,35 +1,36 @@
-<h1>Listing comments</h1>
+<h1>
+  <% if params[:extra] == 'unread' %>
+    Unread
+  <% elsif params[:extra] == 'mine' %>
+    My
+  <% else %>
+    All
+  <% end %>
+  Comments
+</h1>
 
 <table>
   <tr>
-    <th>User</th>
-    <th>Activity</th>
+    <th>From</th>
+    <th>To</th>
+    <th>On Activity</th>
     <th>Text</th>
-    <th></th>
-    <th></th>
     <th></th>
   </tr>
 
 <% @comments.each do |comment| %>
   <tr>
     <td><%= link_to comment.user.login, comment.user %></td>
+    <td><%= link_to comment.activity.user.login, comment.activity.user %></td>
     <td><%= link_to comment.activity.description_short, comment.activity %></td>
     <td><%= comment.text %></td>
-    <td><%= link_to 'Show', comment %></td>
     <td>
-      <% if comment.user == current_user %>
-        <%= link_to 'Edit', edit_comment_path(comment) %>
-      <% end %>
-    </td>
-    <td>
-      <% if comment.user == current_user %>
-        <%= link_to 'Destroy', comment, :confirm => 'Are you sure?', :method => :delete %>
+      <% if comment.user == current_user || comment.activity == current_user %>
+        <%= link_to 'Delete', [comment.activity, comment], :confirm => 'Are you sure?', :method => :delete %>
       <% end %>
     </td>
   </tr>
 <% end %>
 </table>
 
-<br />
-
-<%= link_to 'New Comment', new_comment_path %>
+<%= will_paginate @comments %>

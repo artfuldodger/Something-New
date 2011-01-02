@@ -6,6 +6,8 @@ Somethingnew::Application.routes.draw do
     resources :comments
   end
   
+  match 'comments(/:extra)' => "comments#index"
+  
   resource :user_session
   root :to => "index#index"
   
