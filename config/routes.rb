@@ -2,6 +2,8 @@ Somethingnew::Application.routes.draw do
   
 
   
+  resources :messages
+
   resources :activities do
     resources :comments
   end

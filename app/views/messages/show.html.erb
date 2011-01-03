@@ -1,0 +1,23 @@
+<p>
+  <b>From:</b>
+  <%= link_to @message.user.login, @message.user %>
+</p>
+
+<p>
+  <b>To:</b>
+  <%= link_to User.find(@message.to_user).login, User.find(@message.to_user) %>
+</p>
+
+<p>
+  <b>Title:</b>
+  <%= @message.title %>
+</p>
+
+<p>
+  <b>Body:</b>
+  <%= @message.body %>
+</p>
+
+
+<%= link_to 'Reply', "#{new_message_path}?to=#{@message.user.login}&title=Re:+#{CGI.escape(@message.title)}" %> |
+<%= link_to 'Back', messages_path %>

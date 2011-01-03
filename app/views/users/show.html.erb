@@ -2,6 +2,10 @@
   <%= @user.login %>
 </h2>
 
+<% if current_user and @user != current_user %>
+  <%= link_to 'Message', "/messages/new/?to=#{@user.login}"%>
+<% end %>
+
 <% if !@user.location.blank? %>
   <b>Location:</b> <%= @user.location %><br />
 <% end %>
@@ -24,7 +28,6 @@
     <%= link_to 'New Activity', new_activity_path %><br />
   <% end %>
 <% end %>
-<br />
 <ul>
 <% @activities.each do |activity| %>
   <li>

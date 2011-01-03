@@ -25,6 +25,7 @@
         <% if has_unread_comments %>
           <%= link_to 'Unread comments!', '/comments/unread' %> |
         <% end %>
+        <%= link_to "Messages (#{number_unread_mail})", messages_path %> |
         <%= link_to 'Logout', logout_path %>
       <% else %>
         <%= link_to 'Login', login_path, :class => "awesome medium red" %>

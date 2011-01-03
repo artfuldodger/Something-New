@@ -1,0 +1,62 @@
+<%= link_to 'New Message', new_message_path %>
+
+<h2>Messages</h2>
+
+<h3>Inbox</h3>
+<% if @messages && @messages.count > 0 %>
+  <table>
+    <tr>
+      <th></th>
+      <th>From</th>
+      <th>Title</th>
+      <th>Sent</th>
+      <th></th>
+    </tr>
+
+  <% @messages.each do |message| %>
+    <tr>
+      <td>    
+        <% if !message.seen %>
+          *
+        <% end %>
+      </td>
+      <td><%= link_to message.user.login, message.user %></td>
+      <td><%= link_to message.title, message %></td>
+      <td><%= time_ago_in_words message.created_at %></td>
+      <td><%= link_to 'Delete', message, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+  </table>
+
+  <%= will_paginate @messages %>
+  <br />
+<% else %>
+  <p>You have no messages.</p>
+<% end %>
+
+
+
+<h3>Sent</h3>
+
+<% if @sent_messages && @sent_messages.count > 0 %>
+  <table>
+    <tr>
+      <th>To</th>
+      <th>Title</th>
+      <th>Sent</th>
+    </tr>
+
+  <% @sent_messages.each do |message| %>
+    <tr>
+      <td><%= link_to User.find(message.to_user).login, User.find(message.to_user) %></td>
+      <td><%= link_to message.title, message %></td>
+      <td><%= time_ago_in_words message.created_at %></td>
+    </tr>
+  <% end %>
+  </table>
+  
+    <%= will_paginate @sent_messages, :param_name => :sent_page %>
+  
+<% else %>
+  <p>You have sent no messages.</p>
+<% end %>
