@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110103014413) do
+ActiveRecord::Schema.define(:version => 20110103032414) do
 
   create_table "activities", :force => true do |t|
     t.integer  "user_id"
@@ -70,6 +70,7 @@ ActiveRecord::Schema.define(:version => 20110103014413) do
     t.string   "location"
     t.string   "reddit"
     t.text     "description"
+    t.string   "email"
   end
 
 end
