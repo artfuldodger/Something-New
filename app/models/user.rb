@@ -1,7 +1,9 @@
 class User < ActiveRecord::Base
   has_many :activities
   
-  acts_as_authentic
+  acts_as_authentic do |c|
+    c.validate_email_field = false
+  end
 
 
   def deliver_password_reset_instructions!
