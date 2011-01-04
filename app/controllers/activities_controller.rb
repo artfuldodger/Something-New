@@ -7,9 +7,9 @@ class ActivitiesController < ApplicationController
   def index
     if params[:tag]
       #@activities = Activity.joins('LEFT JOIN tags ON activities.id = tags.activity_id WHERE tags.name like ?', params[:tag]).paginate(:page => params[:page])
-      @activities = Activity.joins(:tags).where('tags.name like ?', params[:tag]).paginate(:page => params[:page])
+      @activities = Activity.joins(:tags).where('tags.name like ?', params[:tag]).order('date desc').paginate(:page => params[:page])
     else
-      @activities = Activity.paginate(:page => params[:page])
+      @activities = Activity.order('date desc').paginate(:page => params[:page])
     end
 
     respond_to do |format|
