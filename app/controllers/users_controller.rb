@@ -23,6 +23,11 @@ class UsersController < ApplicationController
       @user = current_user
     end
     @activities = @user.activities.find(:all, :order => 'date ASC').paginate(:page => params[:page], :per_page => 10)
+    
+    respond_to do |format|
+      format.html # show.html.erb
+      format.xml  { render :xml => @user, :except => [:password_salt, :crypted_password, :perishable_token, :persistence_token, :single_access_token] }
+    end
   end
 
   def edit
@@ -41,5 +46,9 @@ class UsersController < ApplicationController
   
   def index
     @users = User.paginate(:order => 'created_at desc', :page => params[:page])
+    respond_to do |format|
+      format.html # index.html.erb
+      format.xml  { render :xml => @users, :except => [:password_salt, :crypted_password, :perishable_token, :persistence_token, :single_access_token] }
+    end
   end
 end
