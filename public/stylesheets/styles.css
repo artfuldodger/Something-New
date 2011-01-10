@@ -2,12 +2,10 @@ body {
 	background-color: #222222;
 }
 #container {
-	-webkit-border-radius: 25px;
-	-moz-border-radius: 25px;
-	border-radius: 25px;
 	background-color: #ccffff;
-	width: 75%;
-	padding: 10px;
+	width: 90%;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 #header h1 { 
