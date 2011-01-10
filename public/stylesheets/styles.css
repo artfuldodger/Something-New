@@ -36,6 +36,10 @@ body {
 	margin-right: 10px;
 }
 
+.intro {
+	font-size: 1.2em;
+}
+
 a {
 	text-decoration: none;
 }
@@ -54,8 +58,12 @@ a {
 	list-style: none;
 }
 
+h1, h2, h3 { 
+	font-family: 'Cuprum';
+}
+
 body {
-	font-family: Verdana, Tahoma, Helvetica, Arial, sans-serif;
+	font-family: 'Josefin Sans', Verdana, Tahoma, Helvetica, Arial, sans-serif;
 }
 
 /* Awesome buttons from http://www.zurb.com/article/266/super-awesome-buttons-with-css3-and-rgba */
