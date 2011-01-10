@@ -17,15 +17,16 @@
       <%= link_to 'Something New', index_path %>
     </h1>
     <div id="top_navigation">
-      <%= link_to 'Activities', activities_path %> |
-      <%= link_to 'People', users_path %> | 
+      <%= link_to 'Activities', activities_path %> •
+      <%= link_to 'People', users_path %>
       <% if current_user %>
+        •
         <%= link_to current_user.login, user_path(current_user) %>
-        | 
+        • 
         <% if has_unread_comments %>
-          <%= link_to 'Unread comments!', '/comments/unread' %> |
+          <%= link_to 'Unread comments!', '/comments/unread' %> •
         <% end %>
-        <%= link_to "Messages (#{number_unread_mail})", messages_path %> |
+        <%= link_to "Messages (#{number_unread_mail})", messages_path %> •
         <%= link_to 'Logout', logout_path %>
       <% else %>
         <%= link_to 'Login', login_path, :class => "awesome medium red" %>

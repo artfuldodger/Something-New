@@ -22,7 +22,7 @@ class UsersController < ApplicationController
     else
       @user = current_user
     end
-    @activities = @user.activities.find(:all, :order => 'date ASC').paginate(:page => params[:page], :per_page => 10)
+    @activities = @user.activities.find(:all, :order => 'date DESC').paginate(:page => params[:page], :per_page => 10)
     
     respond_to do |format|
       format.html # show.html.erb

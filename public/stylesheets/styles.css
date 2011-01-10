@@ -18,13 +18,26 @@ body {
 	float: right;
 }
 
-a {
-	color: blue;
-	text-decoration: none;
+.left_column {
+	border-right: 1px solid black;
 }
 
-a:hover {
-	text-decoration: underline;
+.width_half {
+	-webkit-border-radius: 25px;
+	-moz-border-radius: 25px;
+	border-radius: 25px;
+	width: 40%;
+	border: 2px solid black;
+	float: left;
+	padding: 10px;
+}
+
+.left_column {
+	margin-right: 10px;
+}
+
+a {
+	text-decoration: none;
 }
 
 #flash_notice {

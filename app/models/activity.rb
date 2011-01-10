@@ -11,6 +11,6 @@ class Activity < ActiveRecord::Base
   self.per_page = 20
   
   def description_short
-    description.length > 50 ? "#{description[0,50]}..." : description
+    description.length > 100 ? "#{description[0,100]}..." : description
   end
 end

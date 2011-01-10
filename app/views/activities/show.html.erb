@@ -10,7 +10,7 @@
 
 <p>
   <b>Description:</b>
-  <%= @activity.description %>
+  <%= simple_format @activity.description %>
 </p>
 
 <% if @activity.tags.count > 0 %>
