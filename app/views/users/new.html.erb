@@ -1,6 +1,13 @@
 <h1>Register</h1>
 
-<% form_for @user, :url => account_path do |f| %>
+<% form_for @user, :url => account_path, :html => { :class => 'width_half' } do |f| %>
   <%= render :partial => "form", :object => f %>
   <%= f.submit "Register" %>
 <% end %>
+
+<div style="float: right" class="width_half">
+  <h2>Why sign up?</h2>
+  <p>Signing up with Something New will enable you to track your daily adventures, comment on others' activities, and message other members!</p>
+</div>
+
+<br style="clear:both" />

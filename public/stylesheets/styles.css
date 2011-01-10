@@ -23,13 +23,16 @@ body {
 }
 
 .width_half {
+	width: 40%;
+	float: left;
+	padding: 10px;
+}
+
+.boxed {
+	border: 2px solid black;
 	-webkit-border-radius: 25px;
 	-moz-border-radius: 25px;
 	border-radius: 25px;
-	width: 40%;
-	border: 2px solid black;
-	float: left;
-	padding: 10px;
 }
 
 .left_column {
@@ -59,7 +62,7 @@ a {
 }
 
 h1, h2, h3 { 
-	font-family: 'Cuprum';
+	font-family: 'Cuprum', Verdana, Tahoma, Helvetica, Arial, sans-serif;;
 }
 
 body {

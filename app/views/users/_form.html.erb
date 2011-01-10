@@ -19,7 +19,9 @@
 <br />
 <%= form.label :password_confirmation %><br />
 <%= form.password_field :password_confirmation %><br />
-<% if !form.object.new_record? %>
+<% if form.object.new_record? %>
+
+<% else %>
   <br />
   <%= form.label :reddit, 'Reddit Username' %><br />
   <%= form.text_field :reddit %><br />
