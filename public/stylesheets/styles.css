@@ -25,10 +25,10 @@ body {
 .width_half {
 	width: 40%;
 	float: left;
-	padding: 10px;
 }
 
 .boxed {
+	padding: 10px;
 	border: 2px solid black;
 	-webkit-border-radius: 25px;
 	-moz-border-radius: 25px;
