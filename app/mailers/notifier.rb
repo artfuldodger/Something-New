@@ -1,6 +1,6 @@
 class Notifier < ActionMailer::Base
   
-  default :from => "joncodes@gmail.com"
+  default :from => "jon@something-new.org"
   
   def password_reset_email(user)
     @edit_password_reset_url = edit_password_reset_url(user.perishable_token)

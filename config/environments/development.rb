@@ -32,7 +32,7 @@ Somethingnew::Application.configure do
     :address              => "smtp.gmail.com",
     :port                 => 587,
     :domain               => 'baci.lindsaar.net',
-    :user_name            => 'joncodes',
+    :user_name            => 'jon@something-new.org',
     :password             => password,
     :authentication       => 'plain',
     :enable_starttls_auto => true  }
