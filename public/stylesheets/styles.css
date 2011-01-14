@@ -8,6 +8,16 @@ body {
 	margin-right: auto;
 }
 
+#content {
+	background-image: url('/images/hangglider_small_transparent.png');
+	background-position: right top;
+	background-repeat: no-repeat;
+}
+
+#intro {
+	padding-right: 150px;
+}
+
 #header h1 { 
 	float: left; 
 }
