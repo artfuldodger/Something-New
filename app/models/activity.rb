@@ -13,4 +13,8 @@ class Activity < ActiveRecord::Base
   def description_short
     description.length > 100 ? "#{description[0,100]}..." : description
   end
+  
+  def description_very_short
+    description.length > 50 ? "#{description[0,50]}..." : description
+  end
 end

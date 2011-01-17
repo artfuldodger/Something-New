@@ -8,9 +8,12 @@
   <link href='http://fonts.googleapis.com/css?family=Josefin+Sans' rel='stylesheet' type='text/css' />
   <% if @activity %>
     <meta property="og:description" content="<%= @activity.description %>" />
+    <meta property="og:title" content="<%= @activity.description_very_short %>"/>
+  <% else %>
+    <meta property="og:title" content="Something New: Try something new today!"/>
   <% end %>
   <meta property="og:site_name" content="Something New"/>
-  <meta property="og:title" content="Something New: Try something new today!"/>
+  
   <meta property="fb:admins" content="26400765"/>
   <meta property="og:image" content="http://www.something-new.org/images/hangglider_small_transparent.png" />
   <%= stylesheet_link_tag :all %>
