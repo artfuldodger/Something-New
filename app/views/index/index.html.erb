@@ -7,6 +7,7 @@
       <li><%= link_to activity.description_short, activity %></li>
     <% end %>
     </ul>
+    <%= link_to 'Have another one?', new_activity_path %>
   </div>
   <% else %>
     <p>You don't have any activities scheduled for today! <%= link_to 'What adventure are you going to have today?', new_activity_path %></p>
