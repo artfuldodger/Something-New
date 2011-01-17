@@ -1,17 +1,10 @@
-<p>
-  <b>User:</b>
-  <%= link_to @activity.user.login, @activity.user %>
-</p>
-
-<p>
-  <b>Date:</b>
-  <%= @activity.date %>
-</p>
-
-<p>
-  <b>Description:</b>
+<div class="boxed" style="margin-right: 150px">
   <%= simple_format @activity.description %>
-</p>
+  <div class="byline">
+    from <%= link_to @activity.user.login, @activity.user %> on <%= @activity.date %>
+  </div>
+  <br style="clear:both" />
+</div>
 
 <% if @activity.tags.count > 0 %>
   <h3>Tags</h3>
