@@ -3,7 +3,7 @@
 </h2>
 
 <% if current_user and @user != current_user %>
-  <%= link_to 'Message', "/messages/new/?to=#{@user.login}"%>
+  <%= link_to 'Message', "/messages/new/?to=#{@user.login}"%><br /><br />
 <% end %>
 
 <% if !@user.location.blank? %>
