@@ -6,7 +6,7 @@
   <meta name="description" contnet="Try something new today! Share your adventures and get inspiration from others' activities.">
   <link href='http://fonts.googleapis.com/css?family=Cuprum' rel='stylesheet' type='text/css' />
   <link href='http://fonts.googleapis.com/css?family=Josefin+Sans' rel='stylesheet' type='text/css' />
-  <% if @activity %>
+  <% if @activity && @activity.description %>
     <meta property="og:description" content="<%= @activity.description %>" />
     <meta property="og:title" content="<%= @activity.description_very_short %>"/>
   <% else %>
