@@ -6,6 +6,10 @@
   <%= link_to 'Message', "/messages/new/?to=#{@user.login}"%><br /><br />
 <% end %>
 
+<% if current_user and @user == current_user && @user.location.blank? && @user.reddit.blank? && @user.description.blank? %>
+  <%= link_to 'Complete your profile information!', edit_account_path %>
+<% end %>
+
 <% if !@user.location.blank? %>
   <b>Location:</b> <%= @user.location %><br />
 <% end %>
