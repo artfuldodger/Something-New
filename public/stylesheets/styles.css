@@ -12,6 +12,23 @@ body {
 	background-image: url('/images/hangglider_small_transparent.png');
 	background-position: right top;
 	background-repeat: no-repeat;
+	float: left;
+	width: 80%;
+}
+
+hr.divider {
+	height: 1px; color: #000000; background-color: #000000; border: 0 none; width: 70%;
+	text-align: left;/*this will align it for IE*/
+	margin: 0 auto 0 0; /*this will align it left for FF*/
+}
+
+#footer {
+	clear: both;
+	font-size: .8em;
+}
+
+#ads {
+	float: right;
 }
 
 #intro {
