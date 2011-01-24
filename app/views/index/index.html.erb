@@ -21,10 +21,36 @@
 <% end %>
 
 
+<% if @todays_activities.count > 0 %>
+  <h2>What's everybody else doing today?</h2>
+  <ul>
+    <% @todays_activities.each do |activity| %>
+      <li>
+        <%= link_to activity.description_short, activity_path(activity) %>
+        from 
+        <%= link_to activity.user.login, activity.user %>
+        </li>
+    <% end %>
+  </ul>
+<% end %>
 
-<h2>What's everybody else doing today?</h2>
+<% if @yesterdays_activities.count > 0 %>
+  <h2>What'd they do yesterday?</h2>
+  <ul>
+    <% @yesterdays_activities.each do |activity| %>
+      <li>
+        <%= link_to activity.description_short, activity_path(activity) %>
+        from 
+        <%= link_to activity.user.login, activity.user %>
+        </li>
+    <% end %>
+  </ul>
+<% end %>
+
+<% if @todays_activities.count == 0 and @yesterdays_activities.count == 0 %>
+<h2>What has everyone been doing?</h2>
 <ul>
-  <% @todays_activities.each do |activity| %>
+  <% @latest_activities.each do |activity| %>
     <li>
       <%= link_to activity.description_short, activity_path(activity) %>
       from 
@@ -32,17 +58,7 @@
       </li>
   <% end %>
 </ul>
-
-<h2>What'd they do yesterday?</h2>
-<ul>
-  <% @yesterdays_activities.each do |activity| %>
-    <li>
-      <%= link_to activity.description_short, activity_path(activity) %>
-      from 
-      <%= link_to activity.user.login, activity.user %>
-      </li>
-  <% end %>
-</ul>
+<% end %>
 
 <div id="columns">
   <div class="boxed width_half left_column">
