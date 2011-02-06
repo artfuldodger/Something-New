@@ -25,7 +25,7 @@
     <td><%= link_to comment.activity.description_short, comment.activity %></td>
     <td><%= comment.text %></td>
     <td>
-      <% if comment.user == current_user || comment.activity == current_user %>
+      <% if comment.user == current_user || comment.activity.user == current_user %>
         <%= link_to 'Delete', [comment.activity, comment], :confirm => 'Are you sure?', :method => :delete %>
       <% end %>
     </td>
